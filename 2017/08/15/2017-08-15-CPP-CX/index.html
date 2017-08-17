@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="C++/CX is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform. Extension SyntaxObjectWinRT objects are created usi">
+<meta name="description" content="C++/CX is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform. Extension Syntax ObjectWinRT objects are created us">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++&#x2F;CX Notes">
-<meta property="og:url" content="http://yoursite.com/2017/08/15/C-CX-Notes/index.html">
+<meta property="og:title" content="C++&#x2F;CX">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/2017-08-15-CPP-CX/index.html">
 <meta property="og:site_name" content="Qingpu&#39;s Notes">
-<meta property="og:description" content="C++/CX is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform. Extension SyntaxObjectWinRT objects are created usi">
+<meta property="og:description" content="C++/CX is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform. Extension Syntax ObjectWinRT objects are created us">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-16T07:57:30.551Z">
+<meta property="og:updated_time" content="2017-08-17T05:09:43.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++&#x2F;CX Notes">
-<meta name="twitter:description" content="C++/CX is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform. Extension SyntaxObjectWinRT objects are created usi">
+<meta name="twitter:title" content="C++&#x2F;CX">
+<meta name="twitter:description" content="C++/CX is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform. Extension Syntax ObjectWinRT objects are created us">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/15/C-CX-Notes/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/15/2017-08-15-CPP-CX/"/>
 
 
 
 
 
-  <title>C++/CX Notes | Qingpu's Notes</title>
+  <title>C++/CX | Qingpu's Notes</title>
   
 
 
@@ -256,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/C-CX-Notes/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/2017-08-15-CPP-CX/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qingpu Shi">
@@ -273,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++/CX Notes</h1>
+          <h1 class="post-title" itemprop="name headline">C++/CX</h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Programming</span>
+                  <a href="/categories/Programming-Language/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming Language</span>
                   </a>
                 </span>
 
@@ -346,11 +346,18 @@
 
       
         <p><a href="https://docs.microsoft.com/en-us/cpp/cppcx/visual-c-language-reference-c-cx" target="_blank" rel="external">C++/CX</a> is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform.</p>
-<h1 id="Extension-Syntax"><a href="#Extension-Syntax" class="headerlink" title="Extension Syntax"></a>Extension Syntax</h1><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>WinRT objects are created using <code>ref new</code> and assigned to variables declared with <code>^</code> (hat) notation inherited from C++/CLI.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Dog^ dog = ref <span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure></p>
-<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><h3 id="Runtime-class"><a href="#Runtime-class" class="headerlink" title="Runtime class"></a>Runtime class</h3><p>There are special kinds of <em>runtime class</em> that  may contain component extension constructs. These are simply referred to as ref classes because they are declared using <code>ref class</code>.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.public.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"dog.private.h"</span></span></div><div class="line"></div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h3 id="Partial-class"><a href="#Partial-class" class="headerlink" title="Partial class"></a>Partial class</h3><p>The feature allows a single class to be split across multiple files. The parts are later merged at compilation. Note the keyword <code>partial</code>.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.private.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"></div><div class="line">partial ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125; ;</div></pre></td></tr></table></figure></p>
-<h2 id="Generic"><a href="#Generic" class="headerlink" title="Generic"></a>Generic</h2><p>Windows Runtime and thus C++/CX supports runtime-based generics. Generic type information is contained in the metadata and instantiated at runtime, unlike C++ templates which are compile-time constructs. Both are supported by the compiler and can be combined.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">generic&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Bag</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    property T item;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="Asynchronous-Programming"><a href="#Asynchronous-Programming" class="headerlink" title="Asynchronous Programming"></a>Asynchronous Programming</h1><p>This part describes the recommended way to consume <a href="https://docs.microsoft.com/en-us/windows/uwp/threading-async/asynchronous-programming-in-cpp-universal-windows-platform-apps" target="_blank" rel="external">asynchronous methods</a> in C++/CX by using the <code>task</code> class that’s defined in the <code>concurrency</code> namespace in ppltasks.h.<br>The following example shows how to use the task class to consume an async method that returns an <code>IAsyncOperation</code> interface and whose operation produces a value. It also shows how to get the buffer data from an opened file.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage::Pickers;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">OpenFile</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    FileOpenPicker^ picker = ref <span class="keyword">new</span> FileOpenPicker();</div><div class="line"></div><div class="line">    Concurrency::create_task(picker-&gt;PickSingleFileAsync()).then([](StorageFile^ file)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> file-&gt;OpenAsync(FileAccessMode::Read);</div><div class="line">    &#125;).then([](IRandomAccessStream^ stream)</div><div class="line">    &#123;</div><div class="line">        Buffer^ buffer = ref <span class="keyword">new</span> Buffer(stream-&gt;Size);</div><div class="line">        <span class="keyword">return</span> stream-&gt;ReadAsync(buffer, stream-&gt;Size, InputStreamOptions::None);</div><div class="line">    &#125;).then([](IBuffer^ buffer)</div><div class="line">    &#123;</div><div class="line">        Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;^ <span class="built_in">array</span> = ref <span class="keyword">new</span> Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;(buffer-&gt;Length);</div><div class="line">        CryptographicBuffer::CopyToByteArray(buffer, &amp;<span class="built_in">array</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="Extension-Syntax"><a href="#Extension-Syntax" class="headerlink" title="Extension Syntax"></a>Extension Syntax</h1><hr>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>WinRT objects are created using <code>ref new</code> and assigned to variables declared with <code>^</code> (hat) notation inherited from C++/CLI.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Dog^ dog = ref <span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><h3 id="Runtime-class"><a href="#Runtime-class" class="headerlink" title="Runtime class"></a>Runtime class</h3><p>There are special kinds of <em>runtime class</em> that  may contain component extension constructs. These are simply referred to as ref classes because they are declared using <code>ref class</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.public.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"dog.private.h"</span></span></div><div class="line"></div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="Partial-class"><a href="#Partial-class" class="headerlink" title="Partial class"></a>Partial class</h3><p>The feature allows a single class to be split across multiple files. The parts are later merged at compilation. Note the keyword <code>partial</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.private.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"></div><div class="line">partial ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125; ;</div></pre></td></tr></table></figure>
+<h2 id="Generic"><a href="#Generic" class="headerlink" title="Generic"></a>Generic</h2><p>Windows Runtime and thus C++/CX supports runtime-based generics. Generic type information is contained in the metadata and instantiated at runtime, unlike C++ templates which are compile-time constructs. Both are supported by the compiler and can be combined.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">generic&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Bag</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    property T item;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Asynchronous-Programming"><a href="#Asynchronous-Programming" class="headerlink" title="Asynchronous Programming"></a>Asynchronous Programming</h1><hr>
+<p>This part describes the recommended way to consume <a href="https://docs.microsoft.com/en-us/windows/uwp/threading-async/asynchronous-programming-in-cpp-universal-windows-platform-apps" target="_blank" rel="external">asynchronous methods</a> in C++/CX by using the <code>task</code> class that’s defined in the <code>concurrency</code> namespace in ppltasks.h.<br>The following example shows how to use the task class to consume an async method that returns an <code>IAsyncOperation</code> interface and whose operation produces a value. It also shows how to get the buffer data from an opened file.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage::Pickers;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">OpenFile</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    FileOpenPicker^ picker = ref <span class="keyword">new</span> FileOpenPicker();</div><div class="line"></div><div class="line">    Concurrency::create_task(picker-&gt;PickSingleFileAsync()).then([](StorageFile^ file)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> file-&gt;OpenAsync(FileAccessMode::Read);</div><div class="line">    &#125;).then([](IRandomAccessStream^ stream)</div><div class="line">    &#123;</div><div class="line">        Buffer^ buffer = ref <span class="keyword">new</span> Buffer(stream-&gt;Size);</div><div class="line">        <span class="keyword">return</span> stream-&gt;ReadAsync(buffer, stream-&gt;Size, InputStreamOptions::None);</div><div class="line">    &#125;).then([](IBuffer^ buffer)</div><div class="line">    &#123;</div><div class="line">        Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;^ <span class="built_in">array</span> = ref <span class="keyword">new</span> Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;(buffer-&gt;Length);</div><div class="line">        CryptographicBuffer::CopyToByteArray(buffer, &amp;<span class="built_in">array</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -375,7 +382,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/14/Hello-Hexo/" rel="next" title="Hello Hexo">
+              <a href="/2017/08/14/2017-08-14-Hello-Hexo/" rel="next" title="Hello Hexo">
                 <i class="fa fa-chevron-left"></i> Hello Hexo
               </a>
             
@@ -385,8 +392,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/16/UWP-Notes/" rel="prev" title="UWP Notes">
-                UWP Notes <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/16/2017-08-16-Reference-UWP-Class-Library/" rel="prev" title="Reference UWP Class Library">
+                Reference UWP Class Library <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -464,7 +471,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -475,7 +482,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

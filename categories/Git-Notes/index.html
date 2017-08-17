@@ -94,17 +94,13 @@
 
 
 
-<meta name="description" content="Reference UWP Class LibraryFor a UWP class library with XAML files, if we want to reference the dll in our UWP projects, we need not only the dll itself but also the .xr.xml file and some other files.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UWP Notes">
-<meta property="og:url" content="http://yoursite.com/2017/08/16/UWP-Notes/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Qingpu&#39;s Notes">
+<meta property="og:url" content="http://yoursite.com/categories/Git-Notes/index.html">
 <meta property="og:site_name" content="Qingpu&#39;s Notes">
-<meta property="og:description" content="Reference UWP Class LibraryFor a UWP class library with XAML files, if we want to reference the dll in our UWP projects, we need not only the dll itself but also the .xr.xml file and some other files.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-16T07:56:39.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UWP Notes">
-<meta name="twitter:description" content="Reference UWP Class LibraryFor a UWP class library with XAML files, if we want to reference the dll in our UWP projects, we need not only the dll itself but also the .xr.xml file and some other files.">
+<meta name="twitter:title" content="Qingpu&#39;s Notes">
 
 
 
@@ -133,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/16/UWP-Notes/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/Git-Notes/"/>
 
 
 
 
 
-  <title>UWP Notes | Qingpu's Notes</title>
+  <title>分类: Git Notes | Qingpu's Notes</title>
   
 
 
@@ -158,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,173 +238,55 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block category">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>Git Notes<small>分类</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/UWP-Notes/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qingpu Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/me.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Qingpu's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2017/08/16/2017-08-16-Git-Command/" itemprop="url">
+              
+                <span itemprop="name">Git Command</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">UWP Notes</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T15:27:01+08:00">
-                2017-08-16
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-08-16T22:45:12+08:00"
+              content="2017-08-16" >
+          08-16
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/UWP/" itemprop="url" rel="index">
-                    <span itemprop="name">UWP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="Reference-UWP-Class-Library"><a href="#Reference-UWP-Class-Library" class="headerlink" title="Reference UWP Class Library"></a>Reference UWP Class Library</h1><p>For a UWP class library with XAML files, if we want to reference the dll in our UWP projects, we need not only the dll itself but also the <code>.xr.xml</code> file and some other files. Because in UWP environment, the resources are no longer embedded in the assembly but are placed next to the dll as content.<br>The files we need to reference:</p>
-<ul>
-<li>MyClassLibrary (Class Library name) Folder<ul>
-<li>MyClassLibrary.xr.xml</li>
-<li>MyUserControl.xaml</li>
-</ul>
-</li>
-<li>MyClassLibrary.dll</li>
-<li>MyClassLibrary.pri (Package Resource Index file)</li>
-</ul>
-<p>To get these files, we can check the <strong>Generate library layout</strong> option in the <strong>Build</strong> configuration under the project’s <strong>Properties</strong> page.<br>Copy these files to our UWP projects and add reference to the <code>MyClassLibrary.dll</code> file in the Visual Studio. Then, all of them will be added automatically.</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/08/15/C-CX-Notes/" rel="next" title="C++/CX Notes">
-                <i class="fa fa-chevron-left"></i> C++/CX Notes
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -416,10 +294,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -440,17 +314,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/me.png"
@@ -465,7 +330,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -476,7 +341,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -503,22 +368,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference-UWP-Class-Library"><span class="nav-number">1.</span> <span class="nav-text">Reference UWP Class Library</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -636,10 +485,10 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-
+  
 
   
 

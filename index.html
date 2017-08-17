@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/UWP-Notes/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/2017-08-17-WRC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qingpu Shi">
@@ -273,7 +273,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/16/UWP-Notes/" itemprop="url">UWP Notes</a></h1>
+                <a class="post-title-link" href="/2017/08/17/2017-08-17-WRC/" itemprop="url">Windows Runtime Components</a></h1>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T15:27:01+08:00">
-                2017-08-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T11:17:22+08:00">
+                2017-08-17
               </time>
             
 
@@ -308,8 +308,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/UWP/" itemprop="url" rel="index">
-                    <span itemprop="name">UWP</span>
+                  <a href="/categories/UWP-Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">UWP Notes</span>
                   </a>
                 </span>
 
@@ -347,7 +347,429 @@
       
         
           
-            <h1 id="Reference-UWP-Class-Library"><a href="#Reference-UWP-Class-Library" class="headerlink" title="Reference UWP Class Library"></a>Reference UWP Class Library</h1><p>For a UWP class library with XAML files, if we want to reference the dll in our UWP projects, we need not only the dll itself but also the <code>.xr.xml</code> file and some other files. Because in UWP environment, the resources are no longer embedded in the assembly but are placed next to the dll as content.<br>The files we need to reference:</p>
+            <h1 id="What-is-Windows-Runtime-Components-WinRT-Components"><a href="#What-is-Windows-Runtime-Components-WinRT-Components" class="headerlink" title="What is Windows Runtime Components (WinRT Components)?"></a>What is Windows Runtime Components (WinRT Components)?</h1><hr>
+<p><a href="https://docs.microsoft.com/en-us/windows/uwp/winrt-components/" target="_blank" rel="external">Windows Runtime Components</a> is a DLL that’s callable from a Universal Windows app.</p>
+<h1 id="Reasons-for-building-WinRT-Components"><a href="#Reasons-for-building-WinRT-Components" class="headerlink" title="Reasons for building WinRT Components"></a>Reasons for building WinRT Components</h1><hr>
+<ul>
+<li>To get the performance advantage of C++ in complex or computationally intensive operations.</li>
+<li>To reuse code that’s already written and tested.</li>
+</ul>
+<h1 id="Creating-a-WinRT-component-in-C-and-calling-it-from-C"><a href="#Creating-a-WinRT-component-in-C-and-calling-it-from-C" class="headerlink" title="Creating a WinRT component in C++ and calling it from C"></a>Creating a WinRT component in C++ and calling it from C</h1><hr>
+<h2 id="Creating-the-C-component-DLL"><a href="#Creating-the-C-component-DLL" class="headerlink" title="Creating the C++ component DLL"></a>Creating the C++ component DLL</h2><ol>
+<li>New Project.</li>
+<li>Expand Visual C++ and select Windows Runtime Component (Universal Windows) project.</li>
+<li>Name the project WinRT_CPP.</li>
+<li>Add a Cat class in the project as below.</li>
+<li>Build the project.</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> WinRT_CPP</div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="title">sealed</span></span></div><div class="line"><span class="class">	&#123;</span></div><div class="line">	<span class="keyword">public</span>:</div><div class="line">		Cat();</div><div class="line">		<span class="function"><span class="keyword">int</span> <span class="title">GetAge</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="keyword">private</span>:</div><div class="line">		<span class="keyword">int</span> age;</div><div class="line">	&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Creating-a-C-client-app"><a href="#Creating-a-C-client-app" class="headerlink" title="Creating a C# client app"></a>Creating a C# client app</h2><ol>
+<li>Select the Solution and choose Add, New Project.</li>
+<li>Expand Visual C# and select Blank App (Universal Windows) project.</li>
+<li>Choose Set as Startup project.</li>
+<li>Add a reference to WinRT_CPP.</li>
+<li>Now you can use the class defined as public in WinRT_CPP, such as Cat class.</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cat = <span class="keyword">new</span> WinRT_CPP.Cat();</div><div class="line"><span class="keyword">int</span> age = cat.GetAge();</div></pre></td></tr></table></figure>
+<p>More detailed steps are <a href="https://docs.microsoft.com/en-us/windows/uwp/winrt-components/walkthrough-creating-a-basic-windows-runtime-component-in-cpp-and-calling-it-from-javascript-or-csharp" target="_blank" rel="external">here</a>. When you build a solution that contains a UWP project and a Windows Runtime component project, the UWP project files and the compiled DLL are merged into one package, which you can debug locally in the simulator or remotely on a tethered device.</p>
+<h1 id="Support-C"><a href="#Support-C" class="headerlink" title="Support C++"></a>Support C++</h1><hr>
+<p>The WinRT Components support both the standard C++ types and C++/CX types internally. However, the parameters passed in the external call method and the return type must use the C++/CX syntax types.</p>
+<p><strong>For example:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> WinRT_CPP</div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="title">sealed</span></span></div><div class="line"><span class="class">	&#123;</span></div><div class="line">	<span class="keyword">public</span>:</div><div class="line">		Cat();</div><div class="line">		<span class="function"><span class="keyword">long</span> <span class="title">GetAge</span><span class="params">()</span></span>; <span class="comment">// Error</span></div><div class="line"></div><div class="line">	<span class="keyword">private</span>:</div><div class="line">		<span class="keyword">long</span> age; <span class="comment">// OK</span></div><div class="line">	&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>When you build the WinRT-Components project containing the <code>Cat</code> class above, the build will fail. The reason is that the return type of public method <code>GetAge()</code> is <code>long</code> and C++/CX don’t support <code>long</code> type. However, you can define the age as a <code>long</code> type property because the age property is in the internal.</p>
+<h1 id="Common-Way-to-Use-Standard-C-in-WinRT-Components"><a href="#Common-Way-to-Use-Standard-C-in-WinRT-Components" class="headerlink" title="Common Way to Use Standard C++ in WinRT Components"></a>Common Way to Use Standard C++ in WinRT Components</h1><hr>
+<ol>
+<li>Input the parameters of C++/CX types</li>
+<li>Convert the C++/CX types to standard C++ types</li>
+<li>Write the standard C++ code</li>
+<li>Convert the outputs from standard C++ type to C++/CX type</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/2017-08-16-Git-Command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qingpu Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qingpu's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/16/2017-08-16-Git-Command/" itemprop="url">Git Command</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T22:45:12+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git-Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Git Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git init</td>
+<td></td>
+</tr>
+<tr>
+<td>git status</td>
+<td>See what the current state of our project is.</td>
+</tr>
+<tr>
+<td>git add <code>.</code></td>
+<td>Stage new and modified files, without deleted files.</td>
+</tr>
+<tr>
+<td>git add <code>-u</code></td>
+<td>Stage deleted and modified files, without new files.</td>
+</tr>
+<tr>
+<td>git add <code>-A</code></td>
+<td>Stage new, deleted and modified files.</td>
+</tr>
+<tr>
+<td>git rm <code>file name</code></td>
+<td></td>
+</tr>
+<tr>
+<td>git commit <code>-m</code> <code>msg</code></td>
+<td></td>
+</tr>
+<tr>
+<td>git log</td>
+<td>A journal that remembers all the changes we’ve commited so far.</td>
+</tr>
+<tr>
+<td>git log <code>--pretty</code>=<code>type</code></td>
+<td>The <code>type</code> can be <code>oneline</code>, <code>short</code>, <code>full</code> or <code>fuller</code>.</td>
+</tr>
+<tr>
+<td>git remote add origin <code>repo address</code></td>
+<td></td>
+</tr>
+<tr>
+<td>git push <code>-u</code> origin master</td>
+<td>The <code>-u</code> tells Git to remember the parameters so that we can simply run ‘git push’ and Git will know what to do.</td>
+</tr>
+<tr>
+<td>git pull origin master</td>
+<td></td>
+</tr>
+<tr>
+<td>git diff <code>HEAD</code>/<code>--staged</code></td>
+<td></td>
+</tr>
+<tr>
+<td>git reset <code>file name</code></td>
+<td>Unstage files.</td>
+</tr>
+<tr>
+<td>git branch</td>
+<td></td>
+</tr>
+<tr>
+<td>git branch <code>-r</code></td>
+<td>Check remote branch.</td>
+</tr>
+<tr>
+<td>git branch <code>branch name</code></td>
+<td>Create a new branch.</td>
+</tr>
+<tr>
+<td>git branch <code>-d</code> <code>branch name</code></td>
+<td>Delete a branch.</td>
+</tr>
+<tr>
+<td>git checkout <code>branch name</code></td>
+<td>Checkout the new branch.</td>
+</tr>
+<tr>
+<td>git checkout <code>-b</code> <code>branch name</code></td>
+<td>Create and checkout the new branch.</td>
+</tr>
+<tr>
+<td>git checkout <code>-b</code> <code>local branch name</code> origin/<code>remote branch name</code></td>
+<td></td>
+</tr>
+<tr>
+<td>git merge <code>branch name</code></td>
+<td></td>
+</tr>
+<tr>
+<td>git reset <code>--hard</code> <code>commit id</code></td>
+<td>Back to some commit version.</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/2017-08-16-Reference-UWP-Class-Library/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qingpu Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qingpu's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/16/2017-08-16-Reference-UWP-Class-Library/" itemprop="url">Reference UWP Class Library</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T15:27:01+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UWP-Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">UWP Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="How-to-reference-a-UWP-class-library-with-XAML-files"><a href="#How-to-reference-a-UWP-class-library-with-XAML-files" class="headerlink" title="How to reference a UWP class library with XAML files?"></a>How to reference a UWP class library with XAML files?</h1><hr>
+<p>For a UWP class library with XAML files, if we want to reference the dll in our UWP projects, we need not only the dll itself but also the <code>.xr.xml</code> file and some other files. Because in UWP environment, the resources are no longer embedded in the assembly but are placed next to the dll as content.<br>The files we need to reference:</p>
 <ul>
 <li>MyClassLibrary (Class Library name) Folder<ul>
 <li>MyClassLibrary.xr.xml</li>
@@ -406,7 +828,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/C-CX-Notes/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/2017-08-15-CPP-CX/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qingpu Shi">
@@ -425,7 +847,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/15/C-CX-Notes/" itemprop="url">C++/CX Notes</a></h1>
+                <a class="post-title-link" href="/2017/08/15/2017-08-15-CPP-CX/" itemprop="url">C++/CX</a></h1>
         
 
         <div class="post-meta">
@@ -460,8 +882,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Programming</span>
+                  <a href="/categories/Programming-Language/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming Language</span>
                   </a>
                 </span>
 
@@ -500,11 +922,18 @@
         
           
             <p><a href="https://docs.microsoft.com/en-us/cpp/cppcx/visual-c-language-reference-c-cx" target="_blank" rel="external">C++/CX</a> is a language extension for C++ compilers from Microsoft that enables C++ programmers to write programs for the new Windows Runtime platform.</p>
-<h1 id="Extension-Syntax"><a href="#Extension-Syntax" class="headerlink" title="Extension Syntax"></a>Extension Syntax</h1><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>WinRT objects are created using <code>ref new</code> and assigned to variables declared with <code>^</code> (hat) notation inherited from C++/CLI.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Dog^ dog = ref <span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure></p>
-<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><h3 id="Runtime-class"><a href="#Runtime-class" class="headerlink" title="Runtime class"></a>Runtime class</h3><p>There are special kinds of <em>runtime class</em> that  may contain component extension constructs. These are simply referred to as ref classes because they are declared using <code>ref class</code>.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.public.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"dog.private.h"</span></span></div><div class="line"></div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h3 id="Partial-class"><a href="#Partial-class" class="headerlink" title="Partial class"></a>Partial class</h3><p>The feature allows a single class to be split across multiple files. The parts are later merged at compilation. Note the keyword <code>partial</code>.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.private.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"></div><div class="line">partial ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125; ;</div></pre></td></tr></table></figure></p>
-<h2 id="Generic"><a href="#Generic" class="headerlink" title="Generic"></a>Generic</h2><p>Windows Runtime and thus C++/CX supports runtime-based generics. Generic type information is contained in the metadata and instantiated at runtime, unlike C++ templates which are compile-time constructs. Both are supported by the compiler and can be combined.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">generic&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Bag</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    property T item;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="Asynchronous-Programming"><a href="#Asynchronous-Programming" class="headerlink" title="Asynchronous Programming"></a>Asynchronous Programming</h1><p>This part describes the recommended way to consume <a href="https://docs.microsoft.com/en-us/windows/uwp/threading-async/asynchronous-programming-in-cpp-universal-windows-platform-apps" target="_blank" rel="external">asynchronous methods</a> in C++/CX by using the <code>task</code> class that’s defined in the <code>concurrency</code> namespace in ppltasks.h.<br>The following example shows how to use the task class to consume an async method that returns an <code>IAsyncOperation</code> interface and whose operation produces a value. It also shows how to get the buffer data from an opened file.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage::Pickers;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">OpenFile</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    FileOpenPicker^ picker = ref <span class="keyword">new</span> FileOpenPicker();</div><div class="line"></div><div class="line">    Concurrency::create_task(picker-&gt;PickSingleFileAsync()).then([](StorageFile^ file)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> file-&gt;OpenAsync(FileAccessMode::Read);</div><div class="line">    &#125;).then([](IRandomAccessStream^ stream)</div><div class="line">    &#123;</div><div class="line">        Buffer^ buffer = ref <span class="keyword">new</span> Buffer(stream-&gt;Size);</div><div class="line">        <span class="keyword">return</span> stream-&gt;ReadAsync(buffer, stream-&gt;Size, InputStreamOptions::None);</div><div class="line">    &#125;).then([](IBuffer^ buffer)</div><div class="line">    &#123;</div><div class="line">        Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;^ <span class="built_in">array</span> = ref <span class="keyword">new</span> Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;(buffer-&gt;Length);</div><div class="line">        CryptographicBuffer::CopyToByteArray(buffer, &amp;<span class="built_in">array</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="Extension-Syntax"><a href="#Extension-Syntax" class="headerlink" title="Extension Syntax"></a>Extension Syntax</h1><hr>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>WinRT objects are created using <code>ref new</code> and assigned to variables declared with <code>^</code> (hat) notation inherited from C++/CLI.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Dog^ dog = ref <span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><h3 id="Runtime-class"><a href="#Runtime-class" class="headerlink" title="Runtime class"></a>Runtime class</h3><p>There are special kinds of <em>runtime class</em> that  may contain component extension constructs. These are simply referred to as ref classes because they are declared using <code>ref class</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.public.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"dog.private.h"</span></span></div><div class="line"></div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="Partial-class"><a href="#Partial-class" class="headerlink" title="Partial class"></a>Partial class</h3><p>The feature allows a single class to be split across multiple files. The parts are later merged at compilation. Note the keyword <code>partial</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// dog.private.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></div><div class="line"></div><div class="line">partial ref <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    ...</div><div class="line">&#125; ;</div></pre></td></tr></table></figure>
+<h2 id="Generic"><a href="#Generic" class="headerlink" title="Generic"></a>Generic</h2><p>Windows Runtime and thus C++/CX supports runtime-based generics. Generic type information is contained in the metadata and instantiated at runtime, unlike C++ templates which are compile-time constructs. Both are supported by the compiler and can be combined.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">generic&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">public</span> ref <span class="class"><span class="keyword">class</span> <span class="title">Bag</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    property T item;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Asynchronous-Programming"><a href="#Asynchronous-Programming" class="headerlink" title="Asynchronous Programming"></a>Asynchronous Programming</h1><hr>
+<p>This part describes the recommended way to consume <a href="https://docs.microsoft.com/en-us/windows/uwp/threading-async/asynchronous-programming-in-cpp-universal-windows-platform-apps" target="_blank" rel="external">asynchronous methods</a> in C++/CX by using the <code>task</code> class that’s defined in the <code>concurrency</code> namespace in ppltasks.h.<br>The following example shows how to use the task class to consume an async method that returns an <code>IAsyncOperation</code> interface and whose operation produces a value. It also shows how to get the buffer data from an opened file.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Windows::Storage::Pickers;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">OpenFile</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    FileOpenPicker^ picker = ref <span class="keyword">new</span> FileOpenPicker();</div><div class="line"></div><div class="line">    Concurrency::create_task(picker-&gt;PickSingleFileAsync()).then([](StorageFile^ file)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> file-&gt;OpenAsync(FileAccessMode::Read);</div><div class="line">    &#125;).then([](IRandomAccessStream^ stream)</div><div class="line">    &#123;</div><div class="line">        Buffer^ buffer = ref <span class="keyword">new</span> Buffer(stream-&gt;Size);</div><div class="line">        <span class="keyword">return</span> stream-&gt;ReadAsync(buffer, stream-&gt;Size, InputStreamOptions::None);</div><div class="line">    &#125;).then([](IBuffer^ buffer)</div><div class="line">    &#123;</div><div class="line">        Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;^ <span class="built_in">array</span> = ref <span class="keyword">new</span> Array&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;(buffer-&gt;Length);</div><div class="line">        CryptographicBuffer::CopyToByteArray(buffer, &amp;<span class="built_in">array</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -553,7 +982,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/14/Hello-Hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/14/2017-08-14-Hello-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qingpu Shi">
@@ -572,7 +1001,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/14/Hello-Hexo/" itemprop="url">Hello Hexo</a></h1>
+                <a class="post-title-link" href="/2017/08/14/2017-08-14-Hello-Hexo/" itemprop="url">Hello Hexo</a></h1>
         
 
         <div class="post-meta">
@@ -607,8 +1036,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/Hexo-Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo Notes</span>
                   </a>
                 </span>
 
@@ -647,7 +1076,8 @@
         
           
             <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><hr>
+<h2 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h2 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
@@ -736,7 +1166,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -747,7 +1177,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

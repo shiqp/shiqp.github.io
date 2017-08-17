@@ -212,18 +212,19 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  padding: 0;
   font-weight: bold;
   line-height: 1.5;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+h1 {
+  margin: 50px 0 0;
 }
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin: 20px 0 15px;
+  margin: 10px 0 5px;
 }
 h1 {
   font-size: 22px;
@@ -297,11 +298,10 @@ img {
   height: auto;
 }
 hr {
-  margin: 40px 0;
-  height: 3px;
+  margin: 5px 0 20px;
+  height: 1px;
   border: none;
   background-color: #ddd;
-  background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
 }
 blockquote {
   padding: 0 15px;
@@ -1809,7 +1809,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c1c888;
+  background: #3dd9a3;
 }
 .links-of-blogroll {
   font-size: 13px;
